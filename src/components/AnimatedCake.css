@@ -1,0 +1,394 @@
+.cake-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  cursor: pointer;
+  min-height: 500px;
+}
+
+.cake {
+  position: relative;
+  width: 300px;
+  height: 280px;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.cake-layer {
+  position: absolute;
+  border-radius: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.layer-bottom {
+  width: 280px;
+  height: 80px;
+  bottom: 0;
+  background: linear-gradient(135deg, #ff6b9d 0%, #ff8fab 50%, #ffa8c5 100%);
+  animation: layerPulse 2s ease-in-out infinite;
+}
+
+.layer-middle {
+  width: 220px;
+  height: 70px;
+  bottom: 70px;
+  background: linear-gradient(135deg, #ff8fab 0%, #ffa8c5 50%, #ffc5d9 100%);
+  animation: layerPulse 2s ease-in-out infinite 0.3s;
+}
+
+.layer-top {
+  width: 160px;
+  height: 60px;
+  bottom: 130px;
+  background: linear-gradient(135deg, #ffa8c5 0%, #ffc5d9 50%, #ffe0ec 100%);
+  animation: layerPulse 2s ease-in-out infinite 0.6s;
+}
+
+@keyframes layerPulse {
+  0%, 100% {
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    transform: translateX(-50%) scale(1.02);
+  }
+}
+
+.frosting {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.frosting-bottom {
+  width: 100%;
+  height: 20px;
+  top: -10px;
+  animation: frostingDrip 3s ease-in-out infinite;
+}
+
+.frosting-middle {
+  width: 100%;
+  height: 18px;
+  top: -9px;
+  animation: frostingDrip 3s ease-in-out infinite 0.2s;
+}
+
+.frosting-top {
+  width: 100%;
+  height: 16px;
+  top: -8px;
+  animation: frostingDrip 3s ease-in-out infinite 0.4s;
+}
+
+@keyframes frostingDrip {
+  0%, 100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(1.1);
+  }
+}
+
+.candles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: -40px;
+}
+
+.candle {
+  position: absolute;
+  width: 8px;
+  height: 50px;
+  bottom: 0;
+}
+
+.candle-body {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, #fff 0%, #ffd700 50%, #ff8c00 100%);
+  border-radius: 4px 4px 0 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.candle-wick {
+  position: absolute;
+  width: 2px;
+  height: 8px;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  border-radius: 1px;
+}
+
+.candle-flame {
+  position: absolute;
+  width: 12px;
+  height: 20px;
+  top: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.candle-flame.lit {
+  opacity: 1;
+  animation: flicker 0.3s ease-in-out infinite alternate;
+}
+
+@keyframes flicker {
+  0% {
+    transform: translateX(-50%) scale(1) rotate(-2deg);
+  }
+  100% {
+    transform: translateX(-50%) scale(1.1) rotate(2deg);
+  }
+}
+
+.flame-inner {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    ellipse at center,
+    #ffeb3b 0%,
+    #ff9800 50%,
+    #ff5722 100%
+  );
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  box-shadow: 0 0 10px #ff9800, 0 0 20px #ff5722;
+}
+
+.cherries {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.cherry {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(circle at 30% 30%, #ff1744, #c51162);
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  animation: cherryBounce 2s ease-in-out infinite;
+}
+
+.cherry::before {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 15px;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #4caf50;
+  border-radius: 1px;
+}
+
+.cherry-1 {
+  top: 20%;
+  left: 15%;
+  animation-delay: 0s;
+}
+
+.cherry-2 {
+  top: 25%;
+  right: 20%;
+  animation-delay: 0.5s;
+}
+
+.cherry-3 {
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  animation-delay: 1s;
+}
+
+@keyframes cherryBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.sparkles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.sparkle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #ffd700;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #ffd700, 0 0 20px #ffeb3b;
+  animation: sparkleFloat 2s ease-out infinite;
+}
+
+@keyframes sparkleFloat {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100px) scale(0);
+  }
+}
+
+.birthday-text {
+  margin-top: 2rem;
+  text-align: center;
+  animation: textGlow 2s ease-in-out infinite;
+}
+
+.birthday-title {
+  font-size: 3rem;
+  font-weight: bold;
+  background: linear-gradient(120deg, #ff6b9d, #ffd700, #ff8fab, #ffd700);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradientShift 3s ease infinite;
+  background-size: 200% 200%;
+  margin-bottom: 0.5rem;
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.birthday-subtitle {
+  font-size: 1.2rem;
+  color: #666;
+  font-weight: 500;
+}
+
+@keyframes textGlow {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@media (max-width: 768px) {
+  .cake-container {
+    min-height: 400px;
+    padding: 1.5rem 1rem;
+  }
+
+  .cake {
+    width: 250px;
+    height: 230px;
+  }
+
+  .layer-bottom {
+    width: 230px;
+    height: 65px;
+  }
+
+  .layer-middle {
+    width: 180px;
+    height: 55px;
+    bottom: 55px;
+  }
+
+  .layer-top {
+    width: 130px;
+    height: 50px;
+    bottom: 100px;
+  }
+
+  .birthday-title {
+    font-size: 2rem;
+  }
+
+  .birthday-subtitle {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .cake-container {
+    min-height: 350px;
+    padding: 1rem 0.5rem;
+  }
+
+  .cake {
+    width: 200px;
+    height: 190px;
+  }
+
+  .layer-bottom {
+    width: 190px;
+    height: 55px;
+  }
+
+  .layer-middle {
+    width: 150px;
+    height: 45px;
+    bottom: 45px;
+  }
+
+  .layer-top {
+    width: 110px;
+    height: 40px;
+    bottom: 80px;
+  }
+
+  .candle {
+    width: 6px;
+    height: 40px;
+  }
+
+  .candle-flame {
+    width: 10px;
+    height: 16px;
+    top: -24px;
+  }
+
+  .cherry {
+    width: 16px;
+    height: 16px;
+  }
+
+  .birthday-title {
+    font-size: 1.5rem;
+  }
+
+  .birthday-subtitle {
+    font-size: 0.9rem;
+  }
+}
+

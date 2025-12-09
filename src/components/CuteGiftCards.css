@@ -1,0 +1,212 @@
+.cute-gift-cards-section {
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, #ffeef7 0%, #fff5f9 50%, #f0f4ff 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.cards-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.cards-title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  background: linear-gradient(120deg, #ff6b9d, #ffd700, #ff8fab);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  animation: titleGlow 3s ease-in-out infinite;
+}
+
+.title-icon {
+  font-size: 2.5rem;
+  animation: iconBounce 2s ease-in-out infinite;
+}
+
+@keyframes titleGlow {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.2); }
+}
+
+@keyframes iconBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Kittens */
+.kittens-container {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.kitten {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  animation: kittenBounce 2s ease-in-out infinite;
+}
+
+@keyframes kittenBounce {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25%, 75% { transform: translateY(-10px) rotate(5deg); }
+}
+
+.kitten-body, .kitten-head, .kitten-tail, .kitten-paw, .kitten-ear {
+  background: linear-gradient(135deg, #ffb347, #ff8c42);
+}
+
+/* Gift Cards */
+.gift-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.gift-card {
+  position: relative;
+  height: 300px;
+  perspective: 1000px;
+  cursor: pointer;
+  animation: cardAppear 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes cardAppear {
+  to { opacity: 1; }
+}
+
+.gift-card .card-front,
+.gift-card .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  transition: transform 0.6s;
+}
+
+.gift-card .card-front {
+  background: linear-gradient(135deg, var(--card-color), var(--card-color));
+}
+
+.gift-card .card-back {
+  background: linear-gradient(135deg, var(--card-color), var(--card-color));
+  transform: rotateY(180deg);
+}
+
+.gift-card.flipped .card-front { transform: rotateY(-180deg); }
+.gift-card.flipped .card-back { transform: rotateY(0deg); }
+
+/* 🔥 Image when card flips */
+.card-image {
+  width: 95%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.card-emoji {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  animation: emojiFloat 2s ease-in-out infinite;
+}
+
+@keyframes emojiFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.card-hint {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-style: italic;
+}
+
+.card-message {
+  font-size: 1.2rem;
+  color: white;
+  text-align: center;
+  line-height: 1.6;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.card-emoji-back {
+  font-size: 3rem;
+  margin-top: 1rem;
+  animation: emojiSpin 3s ease-in-out infinite;
+}
+
+@keyframes emojiSpin {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(360deg); }
+}
+
+/* Hearts */
+.floating-hearts {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.floating-heart {
+  position: absolute;
+  font-size: 1.5rem;
+  animation: floatUp 4s ease-out infinite;
+  opacity: 0;
+}
+
+@keyframes floatUp {
+  0% { opacity: 0; transform: translateY(100px) scale(0.5); }
+  20%, 80% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-100px) scale(1.2); }
+}
+
+@media (max-width: 768px) {
+  .gift-card { height: 260px; }
+}
+
+@media (max-width: 480px) {
+  .cards-title {
+    font-size: 1.6rem;
+    flex-direction: column;
+  }
+}
