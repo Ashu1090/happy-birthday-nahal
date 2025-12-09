@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
 import { ConfettiCanvas } from '../components/ConfettiCanvas'
-import { preloadAudio } from '../components/AudioManager'
+
 
 export function FinalMessagePage() {
   const [fireConfetti] = useState(true)
 
   useEffect(() => {
-    preloadAudio()
+    
   }, [])
 
   return (
